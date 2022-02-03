@@ -1,5 +1,6 @@
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
+import "./static.css";
 
 import React from "react";
 import clsx from "clsx";
@@ -64,11 +65,7 @@ export default function App() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <div>
-          {Dashboard && (
-            <Dashboard layout={{ dashboardName: currentDashboard }} />
-          )}
-        </div>
+        <div>{Dashboard && <Dashboard layoutName={currentDashboard} />}</div>
       </main>
     </div>
   );
