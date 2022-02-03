@@ -3,17 +3,11 @@ import "react-resizable/css/styles.css";
 
 import React from "react";
 import clsx from "clsx";
-import {
-  Drawer,
-  AppBar,
-  Typography,
-  Divider,
-  IconButton
-} from "@material-ui/core";
+import { Drawer, AppBar, Divider, IconButton } from "@material-ui/core";
 import { ChevronLeft } from "@material-ui/icons";
 import TopToolbar from "./Toolbar/Toolbar";
 import DrawerButtons from "./DrawerButtons/DrawerButtons";
-import Dashboards from "./dashboards";
+import Dashboards from "./Dashboards";
 import { useStyles } from "./styles";
 
 export default function App() {
@@ -22,7 +16,7 @@ export default function App() {
   const [currentDashboard, setCurrentDashboard] = React.useState();
 
   React.useEffect(() => {
-    setCurrentDashboard(Object.keys(Dashboards)[1]);
+    setCurrentDashboard(Object.keys(Dashboards)[0]);
   }, []);
 
   const handleDrawerClose = () => {
