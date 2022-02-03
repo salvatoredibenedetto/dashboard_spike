@@ -1,18 +1,28 @@
 import React from "react";
 import { List, ListItemIcon, ListItemText, ListItem } from "@material-ui/core";
-import { AccessAlarm, ThreeDRotation } from "@material-ui/icons";
+import { YouTube, Instagram, Facebook } from "@material-ui/icons";
 
-const DrawerButtons = () => {
+const Dashboards = { YouTube, Instagram, Facebook };
+
+const DrawerButtons = ({ handleSetDashboard }) => {
+  React.useEffect(() => {
+    handleSetDashboard(Object.keys(Dashboards)[0]);
+  }, []);
   return (
     <List>
-      {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-        <ListItem button key={text}>
-          <ListItemIcon>
-            {index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}
-          </ListItemIcon>
-          <ListItemText primary={text} />
-        </ListItem>
-      ))}
+      {Object.keys(Dashboards).map((name, index) => {
+        const Dashboard = Dashboards[name];
+        const handleOnClick = () => {
+          handleSetDashboard(name);
+        };
+
+        return (
+          <ListItem button key={name} onClick={handleOnClick}>
+            <ListItemIcon>{Dashboard && <Dashboard />}</ListItemIcon>
+            <ListItemText primary={name} />
+          </ListItem>
+        );
+      })}
     </List>
   );
 };

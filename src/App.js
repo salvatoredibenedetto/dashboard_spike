@@ -13,17 +13,24 @@ import { useStyles } from "./styles";
 export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [currentDashboard, setCurrentDashboard] = React.useState();
+  const [currentPanel, setCurrentPanel] = React.useState(
+    Object.keys(Dashboards)[0]
+  );
+  const [currentDashboard, setCurrentDashboard] = React.useState("");
 
   React.useEffect(() => {
-    setCurrentDashboard(Object.keys(Dashboards)[0]);
-  }, []);
+    console.log(currentDashboard);
+  }, [currentDashboard]);
 
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
-  const Dashboard = Dashboards[currentDashboard];
+  const onSetCurrentDashboard = (name) => {
+    setCurrentDashboard(name);
+  };
+
+  const Dashboard = Dashboards[currentPanel];
   return (
     <div className={classes.root}>
       <AppBar
@@ -53,11 +60,15 @@ export default function App() {
           </IconButton>
         </div>
         <Divider />
-        <DrawerButtons />
+        <DrawerButtons handleSetDashboard={onSetCurrentDashboard} />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <div>{Dashboard && <Dashboard layout={{ prova: "si" }} />}</div>
+        <div>
+          {Dashboard && (
+            <Dashboard layout={{ dashboardName: currentDashboard }} />
+          )}
+        </div>
       </main>
     </div>
   );
