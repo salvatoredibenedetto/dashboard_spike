@@ -6,21 +6,19 @@ import clsx from "clsx";
 import {
   Drawer,
   AppBar,
-  List,
-  ListItemIcon,
-  ListItemText,
   Typography,
   Divider,
-  IconButton,
-  ListItem
+  IconButton
 } from "@material-ui/core";
-import { AccessAlarm, ThreeDRotation, ChevronLeft } from "@material-ui/icons";
+import { ChevronLeft } from "@material-ui/icons";
 import TopToolbar from "./Toolbar/Toolbar";
+import DrawerButtons from "./DrawerButtons/DrawerButtons";
 import { useStyles } from "./styles";
 
 export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const [currentDashboard, setCurrentDashboard] = React.useState();
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -55,16 +53,7 @@ export default function App() {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <DrawerButtons />
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
