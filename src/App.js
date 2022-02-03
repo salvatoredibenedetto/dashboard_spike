@@ -15,10 +15,13 @@ import {
   IconButton,
   ListItem
 } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import {
+  AccessAlarm,
+  ThreeDRotation,
+  Menu,
+  ChevronLeft,
+  AccountBox
+} from "@material-ui/icons";
 import { useStyles } from "./styles";
 
 export default function MiniDrawer() {
@@ -51,7 +54,7 @@ export default function MiniDrawer() {
               [classes.hide]: open
             })}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography variant="h6" noWrap>
             Mini variant drawer
@@ -73,7 +76,7 @@ export default function MiniDrawer() {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeft />
           </IconButton>
         </div>
         <Divider />
@@ -81,7 +84,7 @@ export default function MiniDrawer() {
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <AccessAlarm /> : <ThreeDRotation />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
