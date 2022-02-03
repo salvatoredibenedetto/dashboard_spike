@@ -23,6 +23,7 @@ export default function App() {
     setOpen(false);
   };
 
+  const Dashboard = Dashboards[currentDashboard];
   return (
     <div className={classes.root}>
       <AppBar
@@ -56,9 +57,7 @@ export default function App() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <div>
-          {Dashboards[currentDashboard] && Dashboards[currentDashboard]()}
-        </div>
+        <div>{Dashboard && <Dashboard layout={{ prova: "si" }} />}</div>
       </main>
     </div>
   );
