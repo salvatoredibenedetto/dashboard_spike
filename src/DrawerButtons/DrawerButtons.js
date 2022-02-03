@@ -1,6 +1,6 @@
 import React from "react";
 import { List, ListItemIcon, ListItemText, ListItem } from "@material-ui/core";
-import { AccessAlarm, ThreeDRotation, ChevronLeft } from "@material-ui/icons";
+import { AccessAlarm, ThreeDRotation } from "@material-ui/icons";
 
 const DrawerButtons = () => {
   return (

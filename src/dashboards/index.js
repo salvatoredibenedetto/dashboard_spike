@@ -1,3 +1,5 @@
-export { default as D1 } from "./D1";
-export { default as D2 } from "./D2";
-export { default as D3 } from "./D3";
+import D1 from "./D1";
+import D2 from "./D2";
+import D3 from "./D3";
+
+export default { D1, D2, D3 };
