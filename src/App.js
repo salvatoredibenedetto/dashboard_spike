@@ -6,7 +6,6 @@ import clsx from "clsx";
 import {
   Drawer,
   AppBar,
-  Toolbar,
   List,
   ListItemIcon,
   ListItemText,
@@ -15,22 +14,13 @@ import {
   IconButton,
   ListItem
 } from "@material-ui/core";
-import {
-  AccessAlarm,
-  ThreeDRotation,
-  Menu,
-  ChevronLeft,
-  AccountBox
-} from "@material-ui/icons";
+import { AccessAlarm, ThreeDRotation, ChevronLeft } from "@material-ui/icons";
+import TopToolbar from "./Toolbar/Toolbar";
 import { useStyles } from "./styles";
 
-export default function MiniDrawer() {
+export default function App() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -44,22 +34,7 @@ export default function MiniDrawer() {
           [classes.appBarShift]: open
         })}
       >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open
-            })}
-          >
-            <Menu />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
+        <TopToolbar setOpen={setOpen} open={open} />
       </AppBar>
       <Drawer
         variant="permanent"
