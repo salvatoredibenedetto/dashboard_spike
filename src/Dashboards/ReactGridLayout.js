@@ -8,7 +8,7 @@ import { Responsive, WidthProvider } from "react-grid-layout";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export const ReactGridLayout = ({ layoutName } = {}) => {
-  const dMap = { CalendarToday: d1, Alarm: d2, CloudUpload: d3 };
+  const dMap = { Collections: d1, Alarm: d2, CloudUpload: d3 };
   const [layout, setLayout] = useState({ lg: layoutName && dMap[layoutName] });
   const [currentBreakpoint, setCurrentBreakpoint] = useState("lg");
 
