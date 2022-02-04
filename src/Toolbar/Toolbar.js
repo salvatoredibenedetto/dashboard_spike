@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
-import { Toolbar, IconButton } from "@material-ui/core";
-import { Menu, AccountBox, GridOn } from "@material-ui/icons";
+import { Toolbar, IconButton, Typography } from "@material-ui/core";
+import { Menu, Dashboard, DashboardTwoTone } from "@material-ui/icons";
 import { useStyles } from "../styles";
 
 const TopToolbar = ({ setOpen, open }) => {
@@ -14,7 +14,6 @@ const TopToolbar = ({ setOpen, open }) => {
     <Toolbar>
       <IconButton
         color="inherit"
-        aria-label="open drawer"
         onClick={handleDrawerOpen}
         edge="start"
         className={clsx(classes.menuButton, {
@@ -25,23 +24,21 @@ const TopToolbar = ({ setOpen, open }) => {
       </IconButton>
       <IconButton
         color="inherit"
-        aria-label="open drawer"
         edge="start"
         className={clsx(classes.menuButton, {
           [classes.hide]: open
         })}
       >
-        <AccountBox />
+        <Dashboard />
       </IconButton>
       <IconButton
         color="inherit"
-        aria-label="open drawer"
         edge="start"
         className={clsx(classes.menuButton, {
           [classes.hide]: open
         })}
       >
-        <GridOn />
+        <DashboardTwoTone />
       </IconButton>
     </Toolbar>
   );
