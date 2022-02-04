@@ -1,7 +1,3 @@
-import "react-grid-layout/css/styles.css";
-import "react-resizable/css/styles.css";
-import "./static.css";
-
 import React from "react";
 import clsx from "clsx";
 import { Drawer, AppBar, Divider, IconButton } from "@material-ui/core";
@@ -31,6 +27,10 @@ export default function App() {
     setCurrentDashboard(name);
   };
 
+  const onSetCurrentPanel = (idx) => {
+    setCurrentPanel(Object.keys(Dashboards)[idx]);
+  };
+
   const Dashboard = Dashboards[currentPanel];
   return (
     <div className={classes.root}>
@@ -40,7 +40,11 @@ export default function App() {
           [classes.appBarShift]: open
         })}
       >
-        <TopToolbar setOpen={setOpen} open={open} />
+        <TopToolbar
+          handleSetCurrentPanel={onSetCurrentPanel}
+          setOpen={setOpen}
+          open={open}
+        />
       </AppBar>
       <Drawer
         variant="permanent"

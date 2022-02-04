@@ -1,3 +1,7 @@
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+import "../static.css";
+
 import React, { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";

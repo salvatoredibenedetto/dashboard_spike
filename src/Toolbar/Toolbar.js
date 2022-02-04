@@ -1,10 +1,10 @@
 import React from "react";
 import clsx from "clsx";
-import { Toolbar, IconButton, Typography } from "@material-ui/core";
+import { Toolbar, IconButton } from "@material-ui/core";
 import { Menu, Dashboard, DashboardTwoTone } from "@material-ui/icons";
 import { useStyles } from "../styles";
 
-const TopToolbar = ({ setOpen, open }) => {
+const TopToolbar = ({ setOpen, open, handleSetCurrentPanel }) => {
   const classes = useStyles();
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -28,6 +28,9 @@ const TopToolbar = ({ setOpen, open }) => {
         className={clsx(classes.menuButton, {
           [classes.hide]: open
         })}
+        onClick={() => {
+          handleSetCurrentPanel(0);
+        }}
       >
         <Dashboard />
       </IconButton>
@@ -37,6 +40,9 @@ const TopToolbar = ({ setOpen, open }) => {
         className={clsx(classes.menuButton, {
           [classes.hide]: open
         })}
+        onClick={() => {
+          handleSetCurrentPanel(1);
+        }}
       >
         <DashboardTwoTone />
       </IconButton>
