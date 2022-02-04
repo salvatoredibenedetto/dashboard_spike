@@ -9,11 +9,13 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export const ReactGridLayout = ({ layoutName } = {}) => {
   const dMap = { Collections: d1, Alarm: d2, CloudUpload: d3 };
-  const [layout, setLayout] = useState({ lg: layoutName && dMap[layoutName] });
+  const [layout, setLayout] = useState({
+    lg: (layoutName && dMap[layoutName]) || []
+  });
   const [currentBreakpoint, setCurrentBreakpoint] = useState("lg");
 
   useEffect(() => {
-    setLayout({ lg: layoutName && dMap[layoutName] });
+    setLayout({ lg: (layoutName && dMap[layoutName]) || [] });
   }, [layoutName]);
 
   const onBreakpointChange = (breakpoint) => {
