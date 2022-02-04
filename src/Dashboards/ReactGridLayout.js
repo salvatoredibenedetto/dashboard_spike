@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import PropTypes from "prop-types";
+import { d1, d2, d3 } from "../dataMock";
 import _ from "lodash";
 
 import { Responsive, WidthProvider } from "react-grid-layout";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 export const ReactGridLayout = ({ layoutName } = {}) => {
-  const [layout, setLayout] = useState({ lg: generateLayout() });
+  const dMap = { CalendarToday: d1, Alarm: d2, CloudUpload: d3 };
+  const [layout, setLayout] = useState({ lg: layoutName && dMap[layoutName] });
   const [currentBreakpoint, setCurrentBreakpoint] = useState("lg");
 
   useEffect(() => {
-    setLayout({ lg: generateLayout() });
+    setLayout({ lg: layoutName && dMap[layoutName] });
   }, [layoutName]);
 
   const onBreakpointChange = (breakpoint) => {
@@ -29,12 +31,7 @@ export const ReactGridLayout = ({ layoutName } = {}) => {
       return (
         <div key={i} className={l.static ? "static" : ""}>
           {l.static ? (
-            <span
-              className="text"
-              title="This item is static and cannot be removed or resized."
-            >
-              Static - {i}
-            </span>
+            <span className="text">Static - {i}</span>
           ) : (
             <span className="text">{i}</span>
           )}
@@ -48,6 +45,8 @@ export const ReactGridLayout = ({ layoutName } = {}) => {
       <Typography variant="h5">{`React Grid layout ${layoutName}`}</Typography>
 
       <ResponsiveReactGridLayout
+        breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+        cols={{ lg: 3, md: 3, sm: 2, xs: 1, xxs: 1 }}
         layouts={layout}
         onBreakpointChange={onBreakpointChange}
         onLayoutChange={handleOnLayoutChange}
@@ -77,15 +76,23 @@ ReactGridLayout.defaultProps = {
 };
 
 function generateLayout() {
-  return _.map(_.range(0, 25), function (item, i) {
+  const random = _.map(_.range(0, 11), function (item, i) {
     var y = Math.ceil(Math.random() * 4) + 1;
     return {
       x: (_.random(0, 5) * 2) % 12,
       y: Math.floor(i / 6) * y,
-      w: 2,
+      w: 1,
       h: y,
       i: i.toString(),
-      static: Math.random() < 0.05
+      static: false,
+      isDraggable: true,
+      isBounded: true
     };
   });
+
+  const mock = [d1, d2, d3];
+  const idx = Math.round(Math.random() * 2);
+  console.log(idx);
+
+  return mock[idx];
 }

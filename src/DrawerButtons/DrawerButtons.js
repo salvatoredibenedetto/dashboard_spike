@@ -1,8 +1,8 @@
 import React from "react";
 import { List, ListItemIcon, ListItemText, ListItem } from "@material-ui/core";
-import { YouTube, Instagram, Facebook } from "@material-ui/icons";
+import { CalendarToday, Alarm, CloudUpload } from "@material-ui/icons";
 
-const Dashboards = { YouTube, Instagram, Facebook };
+const Dashboards = { CalendarToday, Alarm, CloudUpload };
 
 const DrawerButtons = ({ handleSetDashboard }) => {
   React.useEffect(() => {
